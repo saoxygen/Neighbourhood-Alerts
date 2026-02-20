@@ -9,13 +9,6 @@
 * git status
 > Shows the current state of your working directory and staging area. It tells you which files are modified, staged, or untracked.
 
-* git diff
-> Shows the differences between the two files/which changes were made.
-
-* git config --global user.name "Kopano Sekonyela"
-* git config --global user.email kopanodrkk@icloud.com
-* git config --global init.default branch main
-
 * git add index.html 
 > git add *Name of the file* will tell git to keep track of this file. But it stays in staging until you commit these changes
 
@@ -41,8 +34,63 @@
 > This command skips the staging stage and goes straight to commit
 
 * git commit -m "updated Git README file" --amend
-> correct any spelling errors made in your previous commit message
+> correct any spelling errors made in your previous commit 
 
+* git branch NewFeature
+> Create a new branch named *NewFeature*  
+> Creating a different branch separate from the main is needed so you can fix bugs or create new features without affecting the main branch
+
+* git branch
+> To see the name of all the current branches
+
+* git switch NewFeature
+> To access another branch, in this case *NewFeature*
+
+* git switch -c NewFeature
+> This creates the new branch and switches you to that new branch simultaneously
+
+* git merge -m "Merge NewFeature into the main branch" NewFeature
+> While in the *main* branch you can merge the *NewFeature* branch into the *main* branch
+
+* git branch -d NewFeature
+> Git command to delete a branch
+
+* .gitignore 
+> This tells git to ignore all files listed in the *.gitignore* file  
+> Good for ignoring sensitave data such as passwords  
+> Documentation: <https://github.com/github/gitignore>
+
+---
+
+### Initial Git command at the beginning of a project
+
+> git init  
+git add *  
+git commit -m "first commit"   
+git branch -M main  
+git remote add origin https://github.com/saoxygen/Dating-App-for-Devs.git  
+git push -u origin main
+
+### Second Git command for exist project
+
+> git init  
+ git add *  
+ git commit -m "second commit"  
+ git branch -M main  
+ git push -u origin main
+
+ ---
+
+ ### Additional Git Commands for odd situations you might face
+
+
+* git diff
+> Shows the differences between the two files/which changes were made.
+
+* git config --global user.name "Kopano Sekonyela"
+* git config --global user.email kopanodrkk@icloud.com
+* git config --global init.default branch main
+ 
 * git rm "index.html"
 > Physically deletes the file from your project
 
@@ -70,27 +118,3 @@ It removes unreachable Git objects stored inside the hidden .git/objects/ folder
 > + Are not tied to any current branch  
 > + Do not appear in git status  
 > + Are not visible as normal project files
-
-* .gitignore 
-> This tells git to ignore all files listed in the *.gitignore* file  
-> Good for ignoring sensitave data such as passwords  
-> Documentation: <https://github.com/github/gitignore>
-
----
-
-### Initial Git command at the beginning of a project
-
-> git init  
-git add *  
-git commit -m "first commit"   
-git branch -M main  
-git remote add origin https://github.com/saoxygen/Dating-App-for-Devs.git  
-git push -u origin main
-
-### Second Git command for exist project
-
-> git init  
- git add *  
- git commit -m "second commit"  
- git branch -M main  
- git push -u origin main
