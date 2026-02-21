@@ -57,6 +57,15 @@
 * git branch -d NewFeature
 > Git command to delete a branch
 
+* git stash
+> Temporarily saves your uncommitted changes and reverts your working directory to a clean state. This allows you to switch branches or pull updates without losing work. You can later restore the changes using *`git stash pop`* or *`git stash apply`*.
+
+* git fetch
+> Downloads new commits, branches, and tags from the remote repository without merging them. It updates your remote-tracking branches (e.g., origin/main). This lets you review changes before integrating them.
+
+* git checkout -b feature-name
+> Creates a new branch called feature-name and immediately switches to it. This allows you to develop a feature in isolation from the main branch. It helps keep your main branch stable
+
 * .gitignore 
 > This tells git to ignore all files listed in the *.gitignore* file  
 > Good for ignoring sensitave data such as passwords  
@@ -120,3 +129,23 @@ It removes unreachable Git objects stored inside the hidden .git/objects/ folder
 > + Are not tied to any current branch  
 > + Do not appear in git status  
 > + Are not visible as normal project files
+
+---  
+
+# Git Best Practices 
+
+1️⃣ Always *`git pull`* before *`git push`*
+> Pulling first ensures your local branch includes the latest remote changes. This reduces merge conflicts and prevents accidentally overwriting someone else’s work. It keeps the shared branch stable.
+
+2️⃣ Commit small, focused changes
+> Pulling first ensures your local branch includes the latest remote changes. This reduces merge conflicts and prevents accidentally overwriting someone else’s work. It keeps the shared branch stable.
+
+3️⃣ Never commit secrets (.env, API keys, passwords)
+> Sensitive data should be in *`.env`* and added to *`.gitignore`*. Once secrets are committed, they are difficult to fully remove from history. Exposing secrets can cause security breaches.
+
+4️⃣ Do not commit *`node_modules/`* or build folders
+> Dependencies and build outputs can be regenerated. Tracking them bloats the repository and slows Git operations. Only commit source code and configuration.
+
+5️⃣ Use branches for features and fixes
+> Create a separate branch for each feature or bug fix. This protects main from unstable or incomplete work. It also makes code reviews cleaner. **The main branch should always be deployable.**
+
