@@ -44,6 +44,8 @@ It generates `profiles.module.ts` and automatically registers it in `app.module.
 > Creates a **ProfilesController** inside the profiles folder.
 A controller handles **incoming HTTP** requests (GET, POST, PUT, DELETE) and returns responses.
 It also automatically registers the controller inside `profiles.module.ts`
+>
+> A controller decides what to do based on the request your API recieves, what functions to call and allowing your service layer to decide how to do it.
 
 ### Setting up Routes
 
