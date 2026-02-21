@@ -15,10 +15,41 @@ What is NestJS?
 >
 > *`npm install`* is only required if you deleted node_modules, pulled new changes from Git, or cloned the project without dependencies.
 
-
 * npm run start:dev
 > *`npm run start:dev`* starts NestJS in development mode using ts-node with watch mode, meaning it automatically recompiles and restarts the server when you change files.
 
 * npm run start:prod
 > *`npm run start:prod`* runs the compiled JavaScript from the dist/ folder, optimized for performance and without file watching. Production-ready, faster, and uses prebuilt files.
 
+### Modules and Decorators
+
+#### Decorators Definition
+> A **decorator** in TypeScript/NestJS is a special function prefixed with `@` that adds metadata or behavior to a class, method, or property.
+>
+>In NestJS, decorators like `@Controller()` and `@Get()` tell the framework how to handle routes and structure your app.
+>
+>They don’t run your logic — they describe how Nest should treat classes, methods, parameters, and even how to control access or transform data.
+
+* npx @nestjs/cli generate module profiles
+> **You generate a module when you’re creating a new feature/domain (e.g., users, auth, orders)**  
+>
+> Creates a new Profiles module inside your `src/` folder.
+It generates `profiles.module.ts` and automatically registers it in `app.module.ts`.
+>
+>Running `generate module profiles` creates a dedicated place to build everything related to “profiles” (e.g., ProfileController, ProfileService).
+
+* npx @nestjs/cli generate controller profiles
+> **You generate a controller when that feature needs to handle HTTP requests.**
+>
+> Creates a **ProfilesController** inside the profiles folder.
+A controller handles **incoming HTTP** requests (GET, POST, PUT, DELETE) and returns responses.
+It also automatically registers the controller inside `profiles.module.ts`
+
+### Setting up Routes
+
+#### @Get
+> `@Get()` handles HTTP GET requests.
+>
+>NestJS also provides `@Post()`, `@Put()`, `@Delete()`, `@Patch()`, etc., each mapping to the corresponding HTTP method.
+>
+>Example: `@Post()` handles creating data, `@Put()` updates data, and `@Delete()` removes data.
