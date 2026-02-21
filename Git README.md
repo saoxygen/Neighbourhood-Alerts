@@ -62,6 +62,11 @@
 
 * git fetch
 > Downloads new commits, branches, and tags from the remote repository without merging them. It updates your remote-tracking branches (e.g., origin/main). This lets you review changes before integrating them.
+>
+> Fetch results: `branch            Kopano-Testing -> FETCH_HEAD`
+
+* git log -1 `FETCH_HEAD`
+> Using the initial fetch results you can look at the logs to see what changes were made.
 
 * git checkout -b feature-name
 > Creates a new branch called feature-name and immediately switches to it. This allows you to develop a feature in isolation from the main branch. It helps keep your main branch stable
