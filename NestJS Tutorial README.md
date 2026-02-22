@@ -87,6 +87,8 @@ So a class is just a blueprint
 #### Data Transfer Object (DTO)
 > A DTO `(Data Transfer Object)` is a special class used to define the shape of data being sent or received, mainly for validation and type safety.
 > DTOs ensure incoming request data matches expected structure before your logic runs.
+>
+> You can import DTOs as a type to validate the data if you're passing that DTO object from a controller to a service as an example. `import type { CreateProfileDto } from './dto/create-profile.dto'`
 
 ## NestJS Project structure
 
