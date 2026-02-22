@@ -47,6 +47,13 @@ It also automatically registers the controller inside `profiles.module.ts`
 >
 > A controller decides what to do based on the request your API recieves, what functions to call and allowing your service layer to decide how to do it.
 
+* npx @nestjs/cli generate service profiles
+> `npx @nestjs/cli generate service profiles` creates a `ProfilesService` file inside the profiles folder.
+>
+>It also automatically registers the service as a provider inside `profiles.module.ts`.
+>
+> This service is where you put your business logic for the profiles feature.
+
 ### Setting up Routes
 **These Decorators need to be imported before use**
 
@@ -63,7 +70,7 @@ It also automatically registers the controller inside `profiles.module.ts`
 > `@Query('location')` tells Nest: “Extract the query parameter named location from the URL.” In this case it would `Durban`
 
 #### @Param()
-> Extract route parameters from a request.  
+> Extract route parameters from a request **URL**.  
 > `@Param('id')` gets the `id` from the URL (E.g. http://localhost:3000/profiles/5). Which is 5
 
 #### @Body
@@ -80,3 +87,21 @@ So a class is just a blueprint
 #### Data Transfer Object (DTO)
 > A DTO `(Data Transfer Object)` is a special class used to define the shape of data being sent or received, mainly for validation and type safety.
 > DTOs ensure incoming request data matches expected structure before your logic runs.
+
+## NestJS Project structure
+
+* ProfileModule
+> **ProfileModule** – Groups everything related to profiles (controller + service) and tells Nest how they connect.
+
+* ProfileController
+> **ProfileController** – Handles HTTP requests like GET /profiles or POST /profiles and sends responses.
+
+* ProfileService
+> **ProfileService** – Contains the business logic (e.g., create profile, fetch profiles, update profile) and is used by the controller.
+
+* Injectable
+
+        import { Injectable } from '@nestjs/common';  
+        @Injectable()
+
+> Nest automatically gives your controller the service it needs.
