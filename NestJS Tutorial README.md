@@ -143,3 +143,7 @@ So a class is just a blueprint
 > `@IsString()`, `@IsEmail()`, `@IsInt()`, `@IsNotEmpty()`
 > validates the request before your controller logic runs (when using `ValidationPipe`).  
 > String/number checks, email format, min/max length, min/max values, arrays, enums, and custom validation rules
+
+* Global Validation/pips
+> `app.useGlobalPipes(new ValidationPipe)`
+> Import `ValidationPipe` into main.ts and make it Global. This way you can validation data across all controllers in your application without declaring them in each function or decorator.
