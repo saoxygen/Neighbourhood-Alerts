@@ -114,3 +114,13 @@ So a class is just a blueprint
         @Injectable()
 
 > Nest automatically gives your controller the service it needs.
+
+## NestJS Exceptions 
+
+* HttpException
+> `import {` **HttpException** `} from '@nestjs/common';`  
+> Implementaton: `throw new HttpException('Not Found', HttpStatus.NOT_FOUND)`  
+> API results -> `{
+    "statusCode": 404,
+    "message": "Not Found"
+}`
