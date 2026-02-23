@@ -124,3 +124,11 @@ So a class is just a blueprint
     "statusCode": 404,
     "message": "Not Found"
 }`
+
+* NotFoundException
+> `import {` **NotFoundException** `} from '@nestjs/common';`  
+> Implementaton: `throw new NotFoundException();`  
+> API results -> `{
+    "statusCode": 404,
+    "message": "Not Found"
+}`
