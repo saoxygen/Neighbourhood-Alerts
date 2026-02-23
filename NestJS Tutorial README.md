@@ -134,3 +134,12 @@ So a class is just a blueprint
     "statusCode": 404,
     "message": "Not Found"
 }`
+
+## NestJS Libraries
+
+* npm install class-validator class-transformer
+* class-validator
+> `class-validator` is a library used in NestJS to validate incoming request data based on rules defined in a DTO class.  
+> `@IsString()`, `@IsEmail()`, `@IsInt()`, `@IsNotEmpty()`
+> validates the request before your controller logic runs (when using `ValidationPipe`).  
+> String/number checks, email format, min/max length, min/max values, arrays, enums, and custom validation rules

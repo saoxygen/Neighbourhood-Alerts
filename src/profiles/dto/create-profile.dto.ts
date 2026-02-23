@@ -1,4 +1,6 @@
+import { IsString, Length } from 'class-validator'
+
 export class CreateProfileDto {
-    name: string;
-    description: string;
+    @IsString() @Length(3, 10) name: string;
+    @IsString() description: string;
 }
