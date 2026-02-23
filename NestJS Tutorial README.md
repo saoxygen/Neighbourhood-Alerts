@@ -117,6 +117,8 @@ So a class is just a blueprint
 
 ## NestJS Exceptions 
 
+**Noted** -> NestJS excpetions from the service file will be applied to functions in the controller file. 
+
 * HttpException
 > `import {` **HttpException** `} from '@nestjs/common';`  
 > Implementaton: `throw new HttpException('Not Found', HttpStatus.NOT_FOUND)`  
