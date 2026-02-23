@@ -54,6 +54,9 @@ It also automatically registers the controller inside `profiles.module.ts`
 >
 > This service is where you put your business logic for the profiles feature.
 
+* npx @nestjs/cli generate guard profiles
+>
+
 ### Setting up Routes
 **These Decorators need to be imported before use**
 
@@ -147,3 +150,11 @@ So a class is just a blueprint
 * Global Validation/pips
 > `app.useGlobalPipes(new ValidationPipe)`
 > Import `ValidationPipe` into main.ts and make it Global. This way you can validation data across all controllers in your application without declaring them in each function or decorator.
+
+## Gaurds
+
+Guards in NestJS are used to control access to routes before the route handler runs.
+
+They determine whether a request should proceed (return true) or be blocked (return false or throw an exception).
+
+Common use case: authentication and authorization, e.g., checking if a user is logged in or has the correct role before accessing a route.
