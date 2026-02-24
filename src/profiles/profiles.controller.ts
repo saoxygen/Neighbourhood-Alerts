@@ -1,48 +1,34 @@
-import { Controller, Get, Query, Param, Post, Body, Put, Delete, HttpCode, HttpStatus, ParseUUIDPipe, UseGuards } from '@nestjs/common';
-// import DTOS
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { ProfilesService } from './profiles.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
-// import services
-import { ProfilesService } from './profiles.service';
-import type { UUID } from 'crypto';
-import { ProfilesGuard } from './profiles.guard';
 
 @Controller('profiles')
 export class ProfilesController {
+  constructor(private readonly profilesService: ProfilesService) {}
 
-    constructor(private profilesServices: ProfilesService) { }
+  @Post()
+  create(@Body() createProfileDto: CreateProfileDto) {
+    return this.profilesService.create(createProfileDto);
+  }
 
-    // GET /profiles
+  @Get()
+  findAll() {
+    return this.profilesService.findAll();
+  }
 
-    @Get()
-    findAll() {
-        return this.profilesServices.findAll();
-    }
-    // GET /profiles/:id
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.profilesService.findOne(+id);
+  }
 
-    @Get(':id')
-    findOne(@Param('id', ParseUUIDPipe) id: UUID) {
-        return this.profilesServices.findOne(id);
-    }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateProfileDto: UpdateProfileDto) {
+    return this.profilesService.update(+id, updateProfileDto);
+  }
 
-    // POST /profiles
-    @Post()
-    create(@Body() createProfileDto: CreateProfileDto) {
-        return this.profilesServices.create(createProfileDto);
-    }
-
-    // PUT /profiles/:id
-    @Put(':id')
-    update(@Body() updateProfileDto: UpdateProfileDto,
-        @Param('id', ParseUUIDPipe) id: UUID) {
-        return this.profilesServices.update(id, updateProfileDto);
-    }
-
-    // DELETE /profiles/:id
-    @Delete(':id')
-    @UseGuards(ProfilesGuard)
-    @HttpCode(HttpStatus.NO_CONTENT)
-    remove(@Param('id', ParseUUIDPipe) id: UUID) {
-       this.profilesServices.delete(id);
-    }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.profilesService.remove(+id);
+  }
 }

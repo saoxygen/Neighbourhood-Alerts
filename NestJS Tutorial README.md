@@ -10,10 +10,20 @@ What is NestJS?
 
 > installs the cli, names the project **devmatch**, assigns the package manager as **npm** skips the git setup and the directory is the current location shown by the (dot)
 
+* Installing entities  
+`npm install -g @nestjs/cli
+nest g res onboarding`
+> Creates the controller, service and module files
+
 * npm install
 > Installs dependencies for this project, basically all packages needed for this project
 >
 > *`npm install`* is only required if you deleted node_modules, pulled new changes from Git, or cloned the project without dependencies.
+
+* npm audit fix
+> This fixes dependencies with known security issues/vulnerabilities without breaking changes.
+>
+> `npm audit` -> Check if the issues are fixed.
 
 * npm run start:dev
 > *`npm run start:dev`* starts NestJS in development mode using ts-node with watch mode, meaning it automatically recompiles and restarts the server when you change files.
@@ -158,3 +168,19 @@ Guards in NestJS are used to control access to routes before the route handler r
 They determine whether a request should proceed (return true) or be blocked (return false or throw an exception).
 
 Common use case: authentication and authorization, e.g., checking if a user is logged in or has the correct role before accessing a route.
+
+# Connecting to Databases
+
+**TypeORM** (Object Relational Mapper)
+
+npm install --save @nestjs/typeorm typeorm pg
+> pg -> Postgres, mysql2 -> MySql
+
+## Configure .env file
+
+### .env Setup
+
+> A `.env` file stores environment variables (like API keys, database URLs, and secrets) outside your source code so they can be loaded at runtime. It lets you configure different environments (development, testing, production) without changing your code. It’s important because it keeps sensitive data secure and makes applications portable and easier to manage..env files are used to 
+
+Installing .env
+npm i --save @nestjs/config
