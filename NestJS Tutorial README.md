@@ -97,6 +97,15 @@ It also automatically registers the controller inside `profiles.module.ts`
 
 So a class is just a blueprint
 
+#### Entity
+
+**TypeORM** uses **decorators** to understand how to build the table and uses entities to generate SQL automatically
+An Entity in TypeORM is a class that represents a database table.
+
+* @Entity('users') → Maps this class to the users table.
+
+* Each property (name, email, etc.) becomes a column in PostgreSQL.
+
 #### Data Transfer Object (DTO)
 > A DTO `(Data Transfer Object)` is a special class used to define the shape of data being sent or received, mainly for validation and type safety.
 > DTOs ensure incoming request data matches expected structure before your logic runs.
