@@ -1,0 +1,195 @@
+<!-- This read me file contains all the information I used and learnt while building this project -->
+
+# NestJS tutorial
+
+What is NestJS?  
+> NestJS is a progressive Node.js framework built with TypeScript for scalable server-side apps.
+
+### Installation
+* npx @nestjs/cli new devmatch --package-manager npm --skip-git --directory .
+
+> installs the cli, names the project **devmatch**, assigns the package manager as **npm** skips the git setup and the directory is the current location shown by the (dot)
+
+* Installing entities  
+`npm install -g @nestjs/cli
+nest g res onboarding`
+> Creates the controller, service and module files
+
+* npm install
+> Installs dependencies for this project, basically all packages needed for this project
+>
+> *`npm install`* is only required if you deleted node_modules, pulled new changes from Git, or cloned the project without dependencies.
+
+* npm audit fix
+> This fixes dependencies with known security issues/vulnerabilities without breaking changes.
+>
+> `npm audit` -> Check if the issues are fixed.
+
+* npm run start:dev
+> *`npm run start:dev`* starts NestJS in development mode using ts-node with watch mode, meaning it automatically recompiles and restarts the server when you change files.
+
+* npm run start:prod
+> *`npm run start:prod`* runs the compiled JavaScript from the dist/ folder, optimized for performance and without file watching. Production-ready, faster, and uses prebuilt files.
+
+### Modules and Decorators
+
+#### Decorators Definition
+> A **decorator** in TypeScript/NestJS is a special function prefixed with `@` that adds metadata or behavior to a class, method, or property.
+>
+>In NestJS, decorators like `@Controller()` and `@Get()` tell the framework how to handle routes and structure your app.
+>
+>They don’t run your logic — they describe how Nest should treat classes, methods, parameters, and even how to control access or transform data.
+
+* npx @nestjs/cli generate module profiles
+> **You generate a module when you’re creating a new feature/domain (e.g., users, auth, orders)**  
+>
+> Creates a new Profiles module inside your `src/` folder.
+It generates `profiles.module.ts` and automatically registers it in `app.module.ts`.
+>
+>Running `generate module profiles` creates a dedicated place to build everything related to “profiles” (e.g., ProfileController, ProfileService).
+
+* npx @nestjs/cli generate controller profiles
+> **You generate a controller when that feature needs to handle HTTP requests.**
+>
+> Creates a **ProfilesController** inside the profiles folder.
+A controller handles **incoming HTTP** requests (GET, POST, PUT, DELETE) and returns responses.
+It also automatically registers the controller inside `profiles.module.ts`
+>
+> A controller decides what to do based on the request your API recieves, what functions to call and allowing your service layer to decide how to do it.
+
+* npx @nestjs/cli generate service profiles
+> `npx @nestjs/cli generate service profiles` creates a `ProfilesService` file inside the profiles folder.
+>
+>It also automatically registers the service as a provider inside `profiles.module.ts`.
+>
+> This service is where you put your business logic for the profiles feature.
+
+* npx @nestjs/cli generate guard profiles
+>
+
+### Setting up Routes
+**These Decorators need to be imported before use**
+
+#### @Get()
+> `@Get()` handles HTTP GET requests.
+>
+>NestJS also provides `@Post()`, `@Put()`, `@Delete()`, `@Patch()`, etc., each mapping to the corresponding HTTP method.
+>
+>Example: `@Post()` handles creating data, `@Put()` updates data, and `@Delete()` removes data.
+
+#### @Query()
+> Collects a parameter from the the **URL/API**  
+> E.g: `http://localhost:3000/profiles?location=Durban`
+> `@Query('location')` tells Nest: “Extract the query parameter named location from the URL.” In this case it would `Durban`
+
+#### @Param()
+> Extract route parameters from a request **URL**.  
+> `@Param('id')` gets the `id` from the URL (E.g. http://localhost:3000/profiles/5). Which is 5
+
+#### @Body
+> `@Body()` extracts **JSON** data from the request body (usually sent in POST or PUT requests).
+
+#### Classes
+
+> classes can represent services, controllers, entities, utilities, etc.
+>
+>Main use cases: defining structured data (DTOs), creating business logic containers (services), modeling database tables (entities), and organizing app features (controllers/modules).
+
+So a class is just a blueprint
+
+#### Entity
+
+**TypeORM** uses **decorators** to understand how to build the table and uses entities to generate SQL automatically
+An Entity in TypeORM is a class that represents a database table.
+
+* @Entity('users') → Maps this class to the users table.
+
+* Each property (name, email, etc.) becomes a column in PostgreSQL.
+
+#### Data Transfer Object (DTO)
+> A DTO `(Data Transfer Object)` is a special class used to define the shape of data being sent or received, mainly for validation and type safety.
+> DTOs ensure incoming request data matches expected structure before your logic runs.
+>
+> You can import DTOs as a type to validate the data if you're passing that DTO object from a controller to a service as an example. `import type { CreateProfileDto } from './dto/create-profile.dto'`
+
+## NestJS Project structure
+
+* ProfileModule
+> **ProfileModule** – Groups everything related to profiles (controller + service) and tells Nest how they connect.
+
+* ProfileController
+> **ProfileController** – Handles HTTP requests like GET /profiles or POST /profiles and sends responses.
+
+* ProfileService
+> **ProfileService** – Contains the business logic (e.g., create profile, fetch profiles, update profile) and is used by the controller.
+> 
+> Access the profiles Service from your controller via:  
+> `constructor(private profilesServices: ProfilesService) {}`  
+> Call the findAll function in your service from the controller  
+> `this.profilesServices.findAll()`
+>
+> **`this`** is used because profilesService is a property of the **class**, not a global variable.
+
+* Injectable
+
+        import { Injectable } from '@nestjs/common';  
+        @Injectable()
+
+> Nest automatically gives your controller the service it needs.
+
+## NestJS Exceptions 
+
+**Noted** -> NestJS excpetions from the service file will be applied to functions in the controller file. 
+
+* HttpException
+> `import {` **HttpException** `} from '@nestjs/common';`  
+> Implementaton: `throw new HttpException('Not Found', HttpStatus.NOT_FOUND)`  
+> API results -> `{
+    "statusCode": 404,
+    "message": "Not Found"
+}`
+
+* NotFoundException
+> `import {` **NotFoundException** `} from '@nestjs/common';`  
+> Implementaton: `throw new NotFoundException();`  
+> API results -> `{
+    "statusCode": 404,
+    "message": "Not Found"
+}`
+
+## NestJS Libraries
+
+* npm install class-validator class-transformer
+* class-validator
+> `class-validator` is a library used in NestJS to validate incoming request data based on rules defined in a DTO class.  
+> `@IsString()`, `@IsEmail()`, `@IsInt()`, `@IsNotEmpty()`
+> validates the request before your controller logic runs (when using `ValidationPipe`).  
+> String/number checks, email format, min/max length, min/max values, arrays, enums, and custom validation rules
+
+* Global Validation/pips
+> `app.useGlobalPipes(new ValidationPipe)`
+> Import `ValidationPipe` into main.ts and make it Global. This way you can validation data across all controllers in your application without declaring them in each function or decorator.
+
+## Gaurds
+
+Guards in NestJS are used to control access to routes before the route handler runs.
+
+They determine whether a request should proceed (return true) or be blocked (return false or throw an exception).
+
+Common use case: authentication and authorization, e.g., checking if a user is logged in or has the correct role before accessing a route.
+
+# Connecting to Databases
+
+**TypeORM** (Object Relational Mapper)
+
+npm install --save @nestjs/typeorm typeorm pg
+> pg -> Postgres, mysql2 -> MySql
+
+## Configure .env file
+
+### .env Setup
+
+> A `.env` file stores environment variables (like API keys, database URLs, and secrets) outside your source code so they can be loaded at runtime. It lets you configure different environments (development, testing, production) without changing your code. It’s important because it keeps sensitive data secure and makes applications portable and easier to manage..env files are used to 
+
+Installing .env
+npm i --save @nestjs/config

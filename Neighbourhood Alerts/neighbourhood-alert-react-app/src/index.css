@@ -1,0 +1,30 @@
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    --bg-white: rgb(255, 255, 255);
+    --text-white: #fff;
+    --bg-baby-blue: #DEF0FF;
+    --baby-blue-light: #def0ff72;
+    --dark-blue: #072D33;
+    --cta-blue: #009DC6;
+    background-color: var(--bg-white);
+
+    --landing-page: 6rem;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: var(--dark-blue);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.hundred {
+    height: 100%;
+    width: 100%;
+}
