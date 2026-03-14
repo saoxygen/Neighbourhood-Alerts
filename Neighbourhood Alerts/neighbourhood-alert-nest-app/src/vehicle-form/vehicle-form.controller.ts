@@ -9,6 +9,13 @@ export class VehicleFormController {
 
   @Post()
   create(@Body() createVehicleFormDto: CreateVehicleFormDto) {
+
+    // check if this vehicles number plate exists
+
+    // if it does then add on to existing post or cancel the new alert being created
+
+    // if it does create the new post
+
     return this.vehicleFormService.create(createVehicleFormDto);
   }
 
@@ -19,7 +26,7 @@ export class VehicleFormController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.vehicleFormService.findOne(+id);
+    return this.vehicleFormService.findOne(id);
   }
 
   @Patch(':id')

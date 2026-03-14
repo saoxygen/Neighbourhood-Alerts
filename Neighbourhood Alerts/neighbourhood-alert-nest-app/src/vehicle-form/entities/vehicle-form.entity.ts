@@ -9,6 +9,9 @@ export class VehicleForm {
     @Column({ type: 'uuid', nullable: false })
     userUUID: string;
 
+    @Column({ type: 'varchar', length: 20, nullable: false })
+    vehicleStatus: string;
+
     // Core
     @Column({ type: 'varchar', length: 10, nullable: true })
     numberPlate: string;

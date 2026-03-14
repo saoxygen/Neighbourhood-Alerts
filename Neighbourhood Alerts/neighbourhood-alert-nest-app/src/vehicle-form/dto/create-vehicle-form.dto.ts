@@ -1,35 +1,53 @@
-import {IsNotEmpty} from 'class-validator';
-import {VehicleCondition, VehicleType} from '../enums/vehicle.enums'
+import {Length} from 'class-validator';
+import {VehicleCondition, VehicleType, VehicleStatus} from '../enums/vehicle.enums'
 
 export class CreateVehicleFormDto {
     // Core
-    @IsNotEmpty() numberPlate: string;
-    @IsNotEmpty() color: string;
-    @IsNotEmpty() make: string;
-    @IsNotEmpty() model: string;
-    @IsNotEmpty() area: string;
-    @IsNotEmpty() year: number;
-    @IsNotEmpty() vehicleType: VehicleType; // enum
+
+    vehicleStatus: VehicleStatus;
+
+    numberPlate: string;
+
+    color: string;
+
+    make: string;
+
+    model: string;
+
+    area: string;
+
+    year: number;
+
+    vehicleType: VehicleType;
 
     // Registration
     registrationProvince: string;
-    vin: string;
+
+    @Length(17, 17, { message: 'vin must be exactly 17 characters long' }) vin: string;
+
     engineNumber: string;
 
     // Visual
     bodyStyle: string;
+
     additionalColors: string;
-    condition: VehicleCondition; // enum: GOOD | DAMAGED | POOR
+
+    condition: VehicleCondition;
+
     distinctiveFeatures: string;
 
     // Incident
-    @IsNotEmpty() incidentTimestamp: Date;
+    incidentTimestamp: Date;
+
     lastSeenDirection: string;
+
     numberOfOccupants: number;
+
     suspectDescription: string;
 
     // Tracking
     trackingDeviceInstalled: boolean;
+
     trackingProvider: string;
 
     customDescription: string;
