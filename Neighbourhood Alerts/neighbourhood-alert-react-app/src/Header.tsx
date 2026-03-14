@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+
+    const navigate = useNavigate();
 
     return (
         <header>
@@ -8,7 +11,7 @@ function Header() {
             </div>
             <nav>
                 <ul>
-                    <a href="#" className="btn"><li className="flex-center"><i className="fa-solid fa-car icons"></i>Vehicle</li></a>
+                    <a href="#" className="btn" onClick={() => navigate("/vehicle-form")}><li className="flex-center"><i className="fa-solid fa-car icons"></i>Vehicle</li></a>
                     <a href="#" className="btn"><li className="flex-center"><i className="fa-solid fa-user icons"></i>Person</li></a>
                     <a href="#" className="btn"><li className="flex-center"><i className="fa-solid fa-location-dot icons"></i>Area</li></a>
                 </ul>

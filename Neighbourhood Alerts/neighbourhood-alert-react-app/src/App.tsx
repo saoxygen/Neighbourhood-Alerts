@@ -1,17 +1,16 @@
 
 import './App.css'
-import Header from './Header.tsx'
-import Content from './Content.tsx'
-import Footer from './Footer.tsx'
+import LandingPage from './pages/landingPage'
+import VehicleForm from './pages/vehicle-form'
+import {Routes, Route} from 'react-router-dom'
 
 function App() {
 
   return (
-    <>
-      <Header />
-      <Content />
-      <Footer />
-    </>
+    <Routes>
+      <Route path='/' element={<LandingPage/>}/>
+      <Route path='/vehicle-form' element={<VehicleForm/>}/>
+    </Routes>
   );
 }
 
