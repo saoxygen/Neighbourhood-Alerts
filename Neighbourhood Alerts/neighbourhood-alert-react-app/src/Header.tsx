@@ -12,8 +12,8 @@ function Header() {
             <nav>
                 <ul>
                     <a href="#" className="btn" onClick={() => navigate("/vehicle-form")}><li className="flex-center"><i className="fa-solid fa-car icons"></i>Vehicle</li></a>
-                    <a href="#" className="btn"><li className="flex-center"><i className="fa-solid fa-user icons"></i>Person</li></a>
-                    <a href="#" className="btn"><li className="flex-center"><i className="fa-solid fa-location-dot icons"></i>Area</li></a>
+                    <a href="#" className="btn" onClick={() => navigate("/person-form")}><li className="flex-center"><i className="fa-solid fa-user icons"></i>Person</li></a>
+                    <a href="#" className="btn" onClick={() => navigate("/area-form")}><li className="flex-center"><i className="fa-solid fa-location-dot icons"></i>Area</li></a>
                 </ul>
             </nav>
             <div id="cta">
