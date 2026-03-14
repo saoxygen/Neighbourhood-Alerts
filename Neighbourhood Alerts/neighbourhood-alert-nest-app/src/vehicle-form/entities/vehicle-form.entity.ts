@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 import { VehicleType, VehicleCondition, VehicleStatus } from '../enums/vehicle.enums';
+import { CrimeDocumentType } from '../enums/document.enums'
 
 @Entity('VehicleForm')
 export class VehicleForm {
@@ -8,6 +9,9 @@ export class VehicleForm {
 
     @Column({ type: 'uuid', nullable: false })
     userUUID: string;
+
+    @Column({type: 'enum', enum: CrimeDocumentType, nullable: true})
+    crimeDocumentType: CrimeDocumentType;
 
     @Column({ type: 'enum', enum: VehicleStatus, nullable: true })
     vehicleStatus: VehicleStatus;

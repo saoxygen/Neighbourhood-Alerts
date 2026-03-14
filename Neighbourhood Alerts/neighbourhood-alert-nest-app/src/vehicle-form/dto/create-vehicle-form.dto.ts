@@ -1,9 +1,12 @@
 import {IsNumber, IsString, Length, IsDate, IsBoolean} from 'class-validator';
 import { RemoveSpaces } from 'src/transforms/remove-spaces.transform';
 import {VehicleCondition, VehicleType, VehicleStatus} from '../enums/vehicle.enums'
+import { CrimeDocumentType } from '../enums/document.enums'
 
 export class CreateVehicleFormDto {
     // Core
+
+    @IsString() crimeDocumentType: CrimeDocumentType;
 
     @IsString() vehicleStatus: VehicleStatus;
 
