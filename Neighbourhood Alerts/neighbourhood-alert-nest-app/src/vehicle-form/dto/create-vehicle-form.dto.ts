@@ -1,54 +1,55 @@
-import {Length} from 'class-validator';
+import {IsNumber, IsString, Length, IsDate, IsBoolean} from 'class-validator';
+import { RemoveSpaces } from 'src/transforms/remove-spaces.transform';
 import {VehicleCondition, VehicleType, VehicleStatus} from '../enums/vehicle.enums'
 
 export class CreateVehicleFormDto {
     // Core
 
-    vehicleStatus: VehicleStatus;
+    @IsString() vehicleStatus: VehicleStatus;
 
-    numberPlate: string;
+    @IsString() @RemoveSpaces() numberPlate: string;
 
-    color: string;
+    @IsString() color: string;
 
-    make: string;
+    @IsString() make: string;
 
-    model: string;
+    @IsString() model: string;
 
-    area: string;
+    @IsString() area: string;
 
-    year: number;
+    @IsNumber() year: number;
 
-    vehicleType: VehicleType;
+    @IsString() vehicleType: VehicleType;
 
     // Registration
-    registrationProvince: string;
+    @IsString() registrationProvince: string;
 
-    @Length(17, 17, { message: 'vin must be exactly 17 characters long' }) vin: string;
+    @RemoveSpaces() @Length(17, 17, { message: 'vin must be exactly 17 characters long' }) vin: string;
 
-    engineNumber: string;
+    @RemoveSpaces() @IsString() engineNumber: string;
 
     // Visual
-    bodyStyle: string;
+    @IsString() bodyStyle: string;
 
-    additionalColors: string;
+    @IsString() additionalColors: string;
 
-    condition: VehicleCondition;
+    @IsString() condition: VehicleCondition;
 
-    distinctiveFeatures: string;
+    @IsString() distinctiveFeatures: string;
 
     // Incident
-    incidentTimestamp: Date;
+    @IsDate() incidentTimestamp: Date;
 
-    lastSeenDirection: string;
+    @IsString() lastSeenDirection: string;
 
-    numberOfOccupants: number;
+    @IsNumber() numberOfOccupants: number;
 
-    suspectDescription: string;
+    @IsString() suspectDescription: string;
 
     // Tracking
-    trackingDeviceInstalled: boolean;
+    @IsBoolean()trackingDeviceInstalled: boolean;
 
-    trackingProvider: string;
+    @IsString() trackingProvider: string;
 
-    customDescription: string;
+    @IsString() customDescription: string;
 }

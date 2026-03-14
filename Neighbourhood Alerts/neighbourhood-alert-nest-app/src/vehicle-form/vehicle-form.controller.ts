@@ -9,13 +9,6 @@ export class VehicleFormController {
 
   @Post()
   create(@Body() createVehicleFormDto: CreateVehicleFormDto) {
-
-    // check if this vehicles number plate exists
-
-    // if it does then add on to existing post or cancel the new alert being created
-
-    // if it does create the new post
-
     return this.vehicleFormService.create(createVehicleFormDto);
   }
 
@@ -31,11 +24,11 @@ export class VehicleFormController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateVehicleFormDto: UpdateVehicleFormDto) {
-    return this.vehicleFormService.update(+id, updateVehicleFormDto);
+    return this.vehicleFormService.update(id, updateVehicleFormDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.vehicleFormService.remove(+id);
+    return this.vehicleFormService.remove(id);
   }
 }

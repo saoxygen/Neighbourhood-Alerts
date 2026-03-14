@@ -1,4 +1,7 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateVehicleFormDto } from './create-vehicle-form.dto';
+import {IsString} from 'class-validator';
+import {VehicleStatus} from '../enums/vehicle.enums'
 
-export class UpdateVehicleFormDto extends PartialType(CreateVehicleFormDto) {}
+export class UpdateVehicleFormDto {
+    @IsString() vehicleStatus: VehicleStatus;
+    @IsString() customDescription: string;
+}   

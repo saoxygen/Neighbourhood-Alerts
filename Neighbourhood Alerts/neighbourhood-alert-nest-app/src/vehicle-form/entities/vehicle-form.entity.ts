@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
-import { VehicleType, VehicleCondition } from '../enums/vehicle.enums';
+import { VehicleType, VehicleCondition, VehicleStatus } from '../enums/vehicle.enums';
 
 @Entity('VehicleForm')
 export class VehicleForm {
@@ -9,33 +9,33 @@ export class VehicleForm {
     @Column({ type: 'uuid', nullable: false })
     userUUID: string;
 
-    @Column({ type: 'varchar', length: 20, nullable: false })
-    vehicleStatus: string;
+    @Column({ type: 'enum', enum: VehicleStatus, nullable: true })
+    vehicleStatus: VehicleStatus;
 
     // Core
-    @Column({ type: 'varchar', length: 10, nullable: true })
+    @Column({ type: 'varchar', length: 20, nullable: true })
     numberPlate: string;
 
-    @Column({ type: 'varchar', length: 50, nullable: false })
+    @Column({ type: 'varchar', length: 50, nullable: true })
     color: string;
 
-    @Column({ type: 'varchar', length: 50, nullable: false })
+    @Column({ type: 'varchar', length: 50, nullable: true })
     make: string;
 
-    @Column({ type: 'varchar', length: 50, nullable: false })
+    @Column({ type: 'varchar', length: 50, nullable: true })
     model: string;
 
-    @Column({ type: 'varchar', length: 100, nullable: false })
+    @Column({ type: 'varchar', length: 100, nullable: true })
     area: string;
 
     @Column({ type: 'int', nullable: true })
     year: number;
 
-    @Column({ type: 'enum', enum: VehicleType, nullable: false })
+    @Column({ type: 'enum', enum: VehicleType, nullable: true })
     vehicleType: VehicleType;
 
     // Registration
-    @Column({ type: 'varchar', length: 10, nullable: true })
+    @Column({ type: 'varchar', length: 20, nullable: true })
     registrationProvince: string;
 
     @Column({ type: 'varchar', length: 50, nullable: true })
@@ -58,7 +58,7 @@ export class VehicleForm {
     distinctiveFeatures: string;
 
     // Incident
-    @Column({ type: 'timestamp', nullable: false })
+    @Column({ type: 'timestamp', nullable: true })
     incidentTimestamp: Date;
 
     @Column({ type: 'varchar', length: 100, nullable: true })
@@ -71,7 +71,7 @@ export class VehicleForm {
     suspectDescription: string;
 
     // Tracking
-    @Column({ type: 'boolean', default: false, nullable: true })
+    @Column({ type: 'boolean', default: true, nullable: true })
     trackingDeviceInstalled: boolean;
 
     @Column({ type: 'varchar', length: 50, nullable: true })
