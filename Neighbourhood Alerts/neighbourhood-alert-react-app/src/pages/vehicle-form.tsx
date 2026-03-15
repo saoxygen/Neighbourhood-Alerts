@@ -73,9 +73,16 @@ export default function VehicleHtmlForm() {
                                 <label htmlFor="crimeDocumentType">Crime Document Type</label>
                                 <select id="crimeDocumentType" value={formData.crimeDocumentType} onChange={handleChange} className='input-style dropdown-arrow' name="crimeDocumentType">
                                     <option value="NO_DOCUMENT">No Document</option>
-                                    <option value="AFFIDAVIT">Affidavit</option>
-                                    <option value="POLICE_REPORT">Police Report</option>
-                                    <option value="COURT_ORDER">Court Order</option>
+                                    <option value="CASE_NUMBER">Case Number</option>
+                                    <option value="AFFIDAVIT_SWORN_STATEMENT">Affidavit</option>
+                                    <option value="J88_MEDICAL_EXAMINATION_FORM">J88 Medical Examination</option>
+                                    <option value="PROTECTION_ORDER">Protection Order</option>
+                                    <option value="BAIL_NOTICE">Bail Notice</option>
+                                    <option value="CHARGE_SHEET">Charge Sheet</option>
+                                    <option value="RESTRAINING_ORDER">Restraining Order</option>
+                                    <option value="VICTIM_IMPACT_STATEMENT">Victim Impact Statement</option>
+                                    <option value="INSURANCE_LOSS_ASSESSOR_REPORT">Insurance Loss Assessor</option>
+                                    <option value="SAPS_NPA_CORRESPONDENCE">SAPS/NPA Correspondence</option>
                                 </select>
                             </div>
                             <div className="label_data">

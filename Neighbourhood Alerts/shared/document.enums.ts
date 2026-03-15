@@ -16,7 +16,7 @@ export enum CrimeDocumentType {
    * Issued by SAPS when a crime is officially reported.
    * Serves as the foundational proof that a case exists in the system.
    */
-  CAS_NUMBER = 'CAS_NUMBER',
+  CASE_NUMBER = 'CASE_NUMBER',
 
   /**
    * Affidavit / Sworn Statement
