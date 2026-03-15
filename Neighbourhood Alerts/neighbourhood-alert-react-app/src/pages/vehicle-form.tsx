@@ -72,26 +72,39 @@ export default function VehicleHtmlForm() {
                             <div className="label_data">
                                 <label htmlFor="crimeDocumentType">Crime Document Type</label>
                                 <select id="crimeDocumentType" value={formData.crimeDocumentType} onChange={handleChange} className='input-style dropdown-arrow' name="crimeDocumentType">
-                                    <option value="NO_DOCUMENT">No Document</option>
-                                    <option value="CASE_NUMBER">Case Number</option>
-                                    <option value="AFFIDAVIT_SWORN_STATEMENT">Affidavit</option>
-                                    <option value="J88_MEDICAL_EXAMINATION_FORM">J88 Medical Examination</option>
-                                    <option value="PROTECTION_ORDER">Protection Order</option>
-                                    <option value="BAIL_NOTICE">Bail Notice</option>
-                                    <option value="CHARGE_SHEET">Charge Sheet</option>
-                                    <option value="RESTRAINING_ORDER">Restraining Order</option>
-                                    <option value="VICTIM_IMPACT_STATEMENT">Victim Impact Statement</option>
-                                    <option value="INSURANCE_LOSS_ASSESSOR_REPORT">Insurance Loss Assessor</option>
-                                    <option value="SAPS_NPA_CORRESPONDENCE">SAPS/NPA Correspondence</option>
+                                    <option value={CrimeDocumentType.NO_DOCUMENT}>No Document</option>
+                                    <option value={CrimeDocumentType.CASE_NUMBER}>Case Number</option>
+                                    <option value={CrimeDocumentType.AFFIDAVIT_SWORN_STATEMENT}>Affidavit</option>
+                                    <option value={CrimeDocumentType.J88_MEDICAL_EXAMINATION_FORM}>J88 Medical Examination</option>
+                                    <option value={CrimeDocumentType.PROTECTION_ORDER}>Protection Order</option>
+                                    <option value={CrimeDocumentType.BAIL_NOTICE}>Bail Notice</option>
+                                    <option value={CrimeDocumentType.CHARGE_SHEET}>Charge Sheet</option>
+                                    <option value={CrimeDocumentType.RESTRAINING_ORDER}>Restraining Order</option>
+                                    <option value={CrimeDocumentType.VICTIM_IMPACT_STATEMENT}>Victim Impact Statement</option>
+                                    <option value={CrimeDocumentType.INSURANCE_LOSS_ASSESSOR_REPORT}>Insurance Loss Assessor</option>
+                                    <option value={CrimeDocumentType.SAPS_NPA_CORRESPONDENCE}>SAPS/NPA Correspondence</option>
                                 </select>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleStatus">Vehicle Status</label>
                                 <select id="vehicleStatus" value={formData.vehicleStatus} onChange={handleChange} className='input-style dropdown-arrow' name="vehicleStatus">
-                                    <option value="WANTED" selected>Wanted</option>
-                                    <option value="RECOVERED">Recovered</option>
-                                    <option value="STOLEN">Stolen</option>
-                                    <option value="HIJACKED">Hijacked</option>
+                                    <option value={VehicleStatus.STOLEN}>Stolen</option>
+                                    <option value={VehicleStatus.WANTED}>Wanted</option>
+                                    <option value={VehicleStatus.INVOLVED_IN_CRIME}>Involved in Crime</option>
+                                    <option value={VehicleStatus.FOUND}>Found</option>
+                                    <option value={VehicleStatus.ACTIVE}>Active</option>
+                                    <option value={VehicleStatus.MISSING}>Missing</option>
+                                    <option value={VehicleStatus.ABANDONED}>Abandoned</option>
+                                    <option value={VehicleStatus.ACCIDENT_INVOLVED}>Accident Involved</option>
+                                    <option value={VehicleStatus.IMPOUNDED}>Impounded</option>
+                                    <option value={VehicleStatus.SEIZED}>Seized</option>
+                                    <option value={VehicleStatus.UNDER_INVESTIGATION}>Under Investigation</option>
+                                    <option value={VehicleStatus.IN_REPAIR}>In Repair</option>
+                                    <option value={VehicleStatus.WRITTEN_OFF}>Written Off</option>
+                                    <option value={VehicleStatus.DECOMMISSIONED}>Decommissioned</option>
+                                    <option value={VehicleStatus.RECOVERED}>Recovered</option>
+                                    <option value={VehicleStatus.HIJACKED}>Hijacked</option>
+                                    <option value={VehicleStatus.UNKNOWN}>Unknown</option>
                                 </select>
                             </div>
                         </div>
