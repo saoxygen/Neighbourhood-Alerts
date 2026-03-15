@@ -1,7 +1,7 @@
-
 #root {
   margin: 0px;
   padding: 0px;
+  overflow-x: hidden;
 }
 
 .flex-center {
@@ -55,7 +55,7 @@ nav a {
 nav a:hover {
   color: var(--dark-blue);
   background-color: var(--baby-blue-light);
-  
+
 }
 
 nav a:active {
@@ -64,6 +64,14 @@ nav a:active {
 
 ul {
   list-style: none;
+}
+
+.input-style {
+  color: var(--dark-blue);
+  background-color: var(--bg-white);
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.416);
+  padding: 1rem 2rem;
+  border: none;
 }
 
 #logo img {
@@ -81,19 +89,19 @@ ul {
   justify-content: flex-end;
 }
 
-#cta button {
+#cta button, #vehicle-submit-btn {
   color: var(--text-white);
   background-color: var(--cta-blue);
   cursor: pointer;
 }
 
-#cta button:hover {
+#cta button:hover, #vehicle-submit-btn:hover {
   color: var(--dark-blue);
   background-color: var(--bg-baby-blue);
   cursor: pointer;
 }
 
-#cta button:active {
+#cta button:active, #vehicle-submit-btn:active {
   color: var(--text-white);
   background-color: var(--cta-blue);
   cursor: pointer;
@@ -108,4 +116,48 @@ ul {
 #landing-page-text {
   color: var(--dark-blue);
   font-size: var(--landing-page);
+}
+
+/* Vehicle Form */
+
+#vehicle-form {
+  width: 100vw;
+  background-color: var(--baby-blue-light);
+    padding: clamp(1rem, 10vh, 10rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.main-form form {
+  width: 60%;
+  display: flex;
+  background-color: var(--bg-white);
+  flex-direction: column;
+  justify-content: space-around;
+  padding: clamp(1rem, 10vh, 10rem) clamp(1.5rem, 5vw, 4rem);
+  gap: clamp(10px, 3vh, 30px);
+}
+
+.main-form form h4{
+  margin-bottom: min(1rem, 1vh);
+}
+
+.main-form form .label_data {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: min(10px, 10%);
+}
+
+.main-form form .label_data select{
+padding-right: 2rem;  
+}
+
+.main-form form .label_data textarea{
+  width: 300%;
+}
+
+.main-form form .fieldset {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1rem, 3vw, 2rem); 
 }
