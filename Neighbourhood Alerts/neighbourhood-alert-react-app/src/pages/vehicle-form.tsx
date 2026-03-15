@@ -16,7 +16,7 @@ function VehiclehtmlForm() {
 
                             <div className="label_data">
                                 <label htmlFor="crimeDocumentType">Crime Document Type</label>
-                                <select id="crimeDocumentType" className='input-style' name="crimeDocumentType">
+                                <select id="crimeDocumentType" className='input-style dropdown-arrow' name="crimeDocumentType">
                                     <option value="NO_DOCUMENT">No Document</option>
                                     <option value="AFFIDAVIT">Affidavit</option>
                                     <option value="POLICE_REPORT">Police Report</option>
@@ -25,7 +25,7 @@ function VehiclehtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleStatus">Vehicle Status</label>
-                                <select id="vehicleStatus" className='input-style' name="vehicleStatus">
+                                <select id="vehicleStatus" className='input-style dropdown-arrow' name="vehicleStatus">
                                     <option value="WANTED" selected>Wanted</option>
                                     <option value="RECOVERED">Recovered</option>
                                     <option value="STOLEN">Stolen</option>
@@ -61,7 +61,7 @@ function VehiclehtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleType">Vehicle Type</label>
-                                <select id="vehicleType" className='input-style' name="vehicleType">
+                                <select id="vehicleType" className='input-style dropdown-arrow' name="vehicleType">
                                     <option value="SUV" selected>SUV</option>
                                     <option value="SEDAN">Sedan</option>
                                     <option value="HATCHBACK">Hatchback</option>
@@ -84,7 +84,7 @@ function VehiclehtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="registrationProvince">Registration Province</label>
-                                <select id="registrationProvince" className='input-style' name="registrationProvince">
+                                <select id="registrationProvince" className='input-style dropdown-arrow' name="registrationProvince">
                                     <option value="Gauteng" selected>Gauteng</option>
                                     <option value="Western Cape">Western Cape</option>
                                     <option value="Eastern Cape">Eastern Cape</option>
@@ -120,7 +120,7 @@ function VehiclehtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="condition">Condition</label>
-                                <select id="condition" className='input-style' name="condition">
+                                <select id="condition" className='input-style dropdown-arrow' name="condition">
                                     <option value="EXCELLENT">Excellent</option>
                                     <option value="GOOD" selected>Good</option>
                                     <option value="FAIR">Fair</option>
@@ -162,7 +162,7 @@ function VehiclehtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="trackingDeviceInstalled">Tracking Device Installed</label>
-                                <select id="trackingDeviceInstalled" className='input-style' name="trackingDeviceInstalled">
+                                <select id="trackingDeviceInstalled" className='input-style dropdown-arrow' name="trackingDeviceInstalled">
                                     <option value="true" selected>Yes</option>
                                     <option value="false">No</option>
                                 </select>
