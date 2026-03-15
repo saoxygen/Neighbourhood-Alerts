@@ -1,14 +1,68 @@
 
 import Header from '../Header.tsx'
 import { submitForm } from "../services/api.tsx";
+import { useState } from 'react'
+import type { ICreateVehicleForm } from '../interface/ICreateVehicleForm'
+import { VehicleStatus, VehicleType, VehicleCondition } from '/Portfolio/Neighbourhood Alerts/shared/vehicle.enums'
+import { CrimeDocumentType } from '/Portfolio/Neighbourhood Alerts/shared/document.enums'
 
-function VehiclehtmlForm() {
+
+export default function VehicleHtmlForm() {
+    const [formData, setFormData] = useState<ICreateVehicleForm>({
+        // Crime & Status
+        crimeDocumentType: CrimeDocumentType.NO_DOCUMENT,
+        vehicleStatus: VehicleStatus.STOLEN,
+
+        // Core Vehicle Info
+        numberPlate: 'GP 12 3456',
+        color: 'Black',
+        make: 'Toyota',
+        model: 'Fortuner',
+        year: '2022',
+        vehicleType: VehicleType.SUV,
+        area: 'Sandton, Johannesburg',
+
+        // Registration Details
+        registrationProvince: 'Gauteng',
+        vin: '1HGBH41JXMN109186',
+        engineNumber: 'ENG-987654321',
+
+        // Visual Description
+        bodyStyle: '',
+        additionalColors: 'Black roof, tinted windows',
+        condition: VehicleCondition.GOOD,
+        distinctiveFeatures: 'Roof rack, tow bar, aftermarket rims',
+
+        // Incident Details
+        incidentTimestamp: new Date('2026-03-14T10:30'),
+        lastSeenDirection: 'Northbound on N1 highway',
+        numberOfOccupants: '2',
+        suspectDescription: 'Male, approximately 30-40 years old, wearing a red hoodie',
+
+        // Tracking
+        trackingDeviceInstalled: 'true',
+        trackingProvider: 'Tracker SA',
+
+        // Additional Notes
+        customDescription: 'Vehicle was last seen exiting Sandton City parking lot',
+    });
+
+    // const [status, setStatus] = useState("idle");
+
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    }
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        await submitForm(formData); // ← called exactly the same way
+    };
 
     return (
         <>
             <Header />
             <section id='vehicle-form' className='flex-center main-form'>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <h1>Vehicle Form</h1>
 
                     <div className='form-section'>
@@ -17,7 +71,7 @@ function VehiclehtmlForm() {
 
                             <div className="label_data">
                                 <label htmlFor="crimeDocumentType">Crime Document Type</label>
-                                <select id="crimeDocumentType" className='input-style dropdown-arrow' name="crimeDocumentType">
+                                <select id="crimeDocumentType" value={formData.crimeDocumentType} onChange={handleChange} className='input-style dropdown-arrow' name="crimeDocumentType">
                                     <option value="NO_DOCUMENT">No Document</option>
                                     <option value="AFFIDAVIT">Affidavit</option>
                                     <option value="POLICE_REPORT">Police Report</option>
@@ -26,7 +80,7 @@ function VehiclehtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleStatus">Vehicle Status</label>
-                                <select id="vehicleStatus" className='input-style dropdown-arrow' name="vehicleStatus">
+                                <select id="vehicleStatus" value={formData.vehicleStatus} onChange={handleChange} className='input-style dropdown-arrow' name="vehicleStatus">
                                     <option value="WANTED" selected>Wanted</option>
                                     <option value="RECOVERED">Recovered</option>
                                     <option value="STOLEN">Stolen</option>
@@ -129,7 +183,7 @@ function VehiclehtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="distinctiveFeatures">Distinctive Features</label>
-                                <textarea id="distinctiveFeatures" className='input-style' name="suspectDescription" rows={3} placeholder="e.g. Roof rack, custom rims">Roof rack, tow bar, aftermarket rims</textarea>
+                                <textarea id="distinctiveFeatures" className='input-style' name="distinctiveFeatures" rows={3} placeholder="e.g. Roof rack, custom rims">Roof rack, tow bar, aftermarket rims</textarea>
                             </div>
                         </div>
                     </div>
@@ -194,4 +248,4 @@ function VehiclehtmlForm() {
 
 }
 
-export default VehiclehtmlForm;
+// export default MyForm.VehiclehtmlForm;
