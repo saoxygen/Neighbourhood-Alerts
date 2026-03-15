@@ -79,6 +79,14 @@ ul {
     width: min(200px, 25vw);
 }
 
+.input-style:focus {
+
+    outline: none;
+  /* border: 0.15rem solid var(--cta-blue); */
+  box-shadow: 0 0 5px 3px var(--bg-baby-blue), 0 0 8px var(--cta-blue);
+
+}
+
 .dropdown-arrow {
 
   -webkit-appearance: none;
