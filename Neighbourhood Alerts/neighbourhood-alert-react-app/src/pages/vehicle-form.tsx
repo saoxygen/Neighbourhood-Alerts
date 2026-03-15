@@ -111,15 +111,11 @@ function VehiclehtmlForm() {
                         <h4>Visual Description</h4>
                         <div className="fieldset">
                             <div className="label_data">
-                                <label htmlFor="bodyStyle">Body Style</label>
-                                <input type="text" id="bodyStyle" className='input-style' name="bodyStyle" value="SUV" placeholder="e.g. SUV, Sedan" />
-                            </div>
-                            <div className="label_data">
                                 <label htmlFor="additionalColors">Additional Colors</label>
                                 <input type="text" id="additionalColors" className='input-style' name="additionalColors" value="Black roof, tinted windows" placeholder="e.g. White roof, red stripe" />
                             </div>
                             <div className="label_data">
-                                <label htmlFor="condition">Condition</label>
+                                <label htmlFor="condition">Vehicle Condition</label>
                                 <select id="condition" className='input-style dropdown-arrow' name="condition">
                                     <option value="EXCELLENT">Excellent</option>
                                     <option value="GOOD" selected>Good</option>
@@ -127,6 +123,8 @@ function VehiclehtmlForm() {
                                     <option value="POOR">Poor</option>
                                     <option value="DAMAGED">Damaged</option>
                                 </select>
+                            </div>
+                            <div className="label_data">
                             </div>
                             <div className="label_data">
                                 <label htmlFor="distinctiveFeatures">Distinctive Features</label>
@@ -185,7 +183,7 @@ function VehiclehtmlForm() {
                     </div>
 
                     <div className='form-section'>
-                    <button className='btn' id='vehicle-submit-btn' type="submit">Submit Report</button>
+                        <button className='btn' id='vehicle-submit-btn' type="submit">Submit Report</button>
                     </div>
 
                 </form>

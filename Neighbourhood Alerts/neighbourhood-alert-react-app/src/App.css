@@ -80,11 +80,13 @@ ul {
 }
 
 .input-style:focus {
-
     outline: none;
   /* border: 0.15rem solid var(--cta-blue); */
   box-shadow: 0 0 5px 3px var(--bg-baby-blue), 0 0 8px var(--cta-blue);
+}
 
+.input-style option:hover {
+  background-color: var(--cta-blue);
 }
 
 .dropdown-arrow {
@@ -115,19 +117,19 @@ ul {
   justify-content: flex-end;
 }
 
-#cta button, #vehicle-submit-btn {
+#cta button, #vehicle-submit-btn, #person-submit-btn {
   color: var(--text-white);
   background-color: var(--cta-blue);
   cursor: pointer;
 }
 
-#cta button:hover, #vehicle-submit-btn:hover {
+#cta button:hover, #vehicle-submit-btn:hover, #person-submit-btn:hover {
   color: var(--dark-blue);
   background-color: var(--bg-baby-blue);
   cursor: pointer;
 }
 
-#cta button:active, #vehicle-submit-btn:active {
+#cta button:active, #vehicle-submit-btn:active, #person-submit-btn:active {
   color: var(--text-white);
   background-color: var(--cta-blue);
   cursor: pointer;
@@ -146,7 +148,7 @@ ul {
 
 /* Vehicle Form */
 
-#vehicle-form {
+#vehicle-form, #person-form {
   width: 100vw;
   background-color: var(--baby-blue-light);
     padding: clamp(1rem, 10vh, 10rem) clamp(1.5rem, 5vw, 4rem);
