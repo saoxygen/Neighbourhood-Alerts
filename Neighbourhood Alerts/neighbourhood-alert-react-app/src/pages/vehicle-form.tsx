@@ -228,10 +228,10 @@ export default function VehicleHtmlForm() {
                             <div className="label_data">
                                 <label htmlFor="condition">Vehicle Condition</label>
                                 <select id="condition" className='input-style dropdown-arrow' name="condition">
-                                    <option value="EXCELLENT">Excellent</option>
-                                    <option value="GOOD" selected>Good</option>
-                                    <option value="FAIR">Fair</option>
-                                    <option value="POOR">Poor</option>
+                                    <option value={VehicleCondition.GOOD} selected>Good</option>
+                                    <option value={VehicleCondition.OKAY}>Okay</option>
+                                    <option value={VehicleCondition.BAD}>Bad</option>
+                                    <option value={VehicleCondition.DAMAGED}>Damaged</option>
                                     <option value="DAMAGED">Damaged</option>
                                 </select>
                             </div>
