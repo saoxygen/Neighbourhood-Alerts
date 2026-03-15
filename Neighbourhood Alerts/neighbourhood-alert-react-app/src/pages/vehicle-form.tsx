@@ -136,15 +136,51 @@ export default function VehicleHtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleType">Vehicle Type</label>
-                                <select id="vehicleType" className='input-style dropdown-arrow' name="vehicleType">
-                                    <option value="SUV" selected>SUV</option>
-                                    <option value="SEDAN">Sedan</option>
-                                    <option value="HATCHBACK">Hatchback</option>
-                                    <option value="BAKKIE">Bakkie</option>
-                                    <option value="MINIBUS">Minibus</option>
-                                    <option value="TRUCK">Truck</option>
-                                    <option value="MOTORCYCLE">Motorcycle</option>
-                                    <option value="OTHER">Other</option>
+                                <select id="vehicleType" value={formData.vehicleType} onChange={handleChange} className='input-style dropdown-arrow' name="vehicleType">
+                                    <optgroup label="Passenger Vehicles">
+                                        <option value={VehicleType.SEDAN}>Sedan</option>
+                                        <option value={VehicleType.HATCHBACK}>Hatchback</option>
+                                        <option value={VehicleType.COUPE}>Coupe</option>
+                                        <option value={VehicleType.CONVERTIBLE}>Convertible</option>
+                                        <option value={VehicleType.WAGON}>Wagon</option>
+                                        <option value={VehicleType.SUV}>SUV</option>
+                                        <option value={VehicleType.CROSSOVER}>Crossover</option>
+                                        <option value={VehicleType.MPV}>MPV (People Carrier)</option>
+                                    </optgroup>
+                                    <optgroup label="Light Commercial">
+                                        <option value={VehicleType.BAKKIE}>Bakkie</option>
+                                        <option value={VehicleType.MINIBUS}>Minibus</option>
+                                        <option value={VehicleType.MINIBUS_TAXI}>Minibus Taxi</option>
+                                        <option value={VehicleType.VAN}>Van</option>
+                                        <option value={VehicleType.MICROBUS}>Microbus</option>
+                                    </optgroup>
+                                    <optgroup label="Heavy Commercial">
+                                        <option value={VehicleType.TRUCK}>Truck</option>
+                                        <option value={VehicleType.FLATBED_TRUCK}>Flatbed Truck</option>
+                                        <option value={VehicleType.TIPPER_TRUCK}>Tipper Truck</option>
+                                        <option value={VehicleType.TANKER}>Tanker</option>
+                                        <option value={VehicleType.SEMI_TRUCK}>Semi Truck</option>
+                                        <option value={VehicleType.BOX_TRUCK}>Box Truck</option>
+                                    </optgroup>
+                                    <optgroup label="Buses">
+                                        <option value={VehicleType.BUS}>Bus</option>
+                                        <option value={VehicleType.COACH}>Coach</option>
+                                    </optgroup>
+                                    <optgroup label="Two / Three Wheelers">
+                                        <option value={VehicleType.MOTORBIKE}>Motorbike</option>
+                                        <option value={VehicleType.SCOOTER}>Scooter</option>
+                                        <option value={VehicleType.TRIKE}>Trike</option>
+                                        <option value={VehicleType.QUAD_BIKE}>Quad Bike</option>
+                                    </optgroup>
+                                    <optgroup label="Specialised">
+                                        <option value={VehicleType.AMBULANCE}>Ambulance</option>
+                                        <option value={VehicleType.FIRE_TRUCK}>Fire Truck</option>
+                                        <option value={VehicleType.ARMOURED_VEHICLE}>Armoured Vehicle</option>
+                                        <option value={VehicleType.TRACTOR}>Tractor</option>
+                                        <option value={VehicleType.FORKLIFT}>Forklift</option>
+                                        <option value={VehicleType.GOLF_CART}>Golf Cart</option>
+                                    </optgroup>
+                                    <option value={VehicleType.OTHER}>Other</option>
                                 </select>
                             </div>
                             <div className="label_data">
