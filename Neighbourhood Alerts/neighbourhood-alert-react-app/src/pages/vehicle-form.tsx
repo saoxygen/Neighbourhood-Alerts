@@ -14,42 +14,42 @@ export default function VehicleHtmlForm() {
         vehicleStatus: VehicleStatus.STOLEN,
 
         // Core Vehicle Info
-        numberPlate: 'GP 12 3456',
-        color: 'Black',
-        make: 'Toyota',
-        model: 'Fortuner',
-        year: '2022',
+        numberPlate: '',
+        color: '',
+        make: '',
+        model: '',
+        year: '',
         vehicleType: VehicleType.SUV,
-        area: 'Sandton, Johannesburg',
+        area: '',
 
         // Registration Details
-        registrationProvince: 'Gauteng',
-        vin: '1HGBH41JXMN109186',
-        engineNumber: 'ENG-987654321',
+        registrationProvince: '',
+        vin: '',
+        engineNumber: '',
 
         // Visual Description
         bodyStyle: '',
-        additionalColors: 'Black roof, tinted windows',
+        additionalColors: '',
         condition: VehicleCondition.GOOD,
-        distinctiveFeatures: 'Roof rack, tow bar, aftermarket rims',
+        distinctiveFeatures: '',
 
         // Incident Details
-        incidentTimestamp: new Date('2026-03-14T10:30'),
-        lastSeenDirection: 'Northbound on N1 highway',
-        numberOfOccupants: '2',
-        suspectDescription: 'Male, approximately 30-40 years old, wearing a red hoodie',
+        incidentTimestamp: '',
+        lastSeenDirection: '',
+        numberOfOccupants: '',
+        suspectDescription: '',
 
         // Tracking
-        trackingDeviceInstalled: 'true',
-        trackingProvider: 'Tracker SA',
+        trackingDeviceInstalled: '',
+        trackingProvider: '',
 
         // Additional Notes
-        customDescription: 'Vehicle was last seen exiting Sandton City parking lot',
+        customDescription: '',
     });
 
     // const [status, setStatus] = useState("idle");
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement >) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
@@ -57,6 +57,14 @@ export default function VehicleHtmlForm() {
         e.preventDefault();
         await submitForm(formData); // ← called exactly the same way
     };
+
+    // const [touched, setTouched] = useState({
+    //     crimeDocumentType: false,
+    //     vehicleStatus: false,
+    //     vehicleType: false,
+    //     condition: false,
+    //     // ... any other dropdowns
+    // });
 
     return (
         <>
@@ -71,7 +79,8 @@ export default function VehicleHtmlForm() {
 
                             <div className="label_data">
                                 <label htmlFor="crimeDocumentType">Crime Document Type</label>
-                                <select id="crimeDocumentType" value={formData.crimeDocumentType} onChange={handleChange} className='input-style dropdown-arrow' name="crimeDocumentType">
+                                <select id="crimeDocumentType" value={formData.crimeDocumentType} onChange={handleChange} className='input-style dropdown-arrow' name="crimeDocumentType" defaultValue="">
+                                    <option value="" disabled selected hidden>Select document type</option>
                                     <option value={CrimeDocumentType.NO_DOCUMENT}>No Document</option>
                                     <option value={CrimeDocumentType.CASE_NUMBER}>Case Number</option>
                                     <option value={CrimeDocumentType.AFFIDAVIT_SWORN_STATEMENT}>Affidavit</option>
@@ -116,23 +125,23 @@ export default function VehicleHtmlForm() {
                             <div className="label_data">
 
                                 <label htmlFor="numberPlate">Number Plate</label>
-                                <input type="text" id="numberPlate" className='input-style' name="numberPlate" value="GP 12 3456" placeholder="e.g. GP 12 3456" />
+                                <input type="text" id="numberPlate" className='input-style' name="numberPlate" value={formData.numberPlate} placeholder="e.g. GP 12 3456" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="color">Color</label>
-                                <input type="text" id="color" className='input-style' name="color" value="Black" placeholder="e.g. Black" />
+                                <input type="text" id="color" className='input-style' name="color" value={formData.color} placeholder="e.g. Black" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="make">Make</label>
-                                <input type="text" id="make" className='input-style' name="make" value="Toyota" placeholder="e.g. Toyota" />
+                                <input type="text" id="make" className='input-style' name="make" value={formData.make} placeholder="e.g. Toyota" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="model">Model</label>
-                                <input type="text" id="model" className='input-style' name="model" value="htmlFortuner" placeholder="e.g. htmlFortuner" />
+                                <input type="text" id="model" className='input-style' name="model" value={formData.model} placeholder="e.g. htmlFortuner" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="year">Year</label>
-                                <input type="number" id="year" className='input-style' name="year" value="2022" min="1900" max="2100" placeholder="e.g. 2022" />
+                                <input type="number" id="year" className='input-style' name="year" value={formData.year} min="1900" max="2100" placeholder="e.g. 2022" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleType">Vehicle Type</label>
@@ -185,7 +194,7 @@ export default function VehicleHtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="area">Area</label>
-                                <input type="text" id="area" className='input-style' name="area" value="Sandton, Johannesburg" placeholder="e.g. Sandton, Johannesburg" />
+                                <input type="text" id="area" className='input-style' name="area" value={formData.area} placeholder="e.g. Sandton, Johannesburg" onChange={handleChange}/>
                             </div>
                         </div>
                     </div>
@@ -195,7 +204,7 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="registrationProvince">Registration Province</label>
-                                <select id="registrationProvince" className='input-style dropdown-arrow' name="registrationProvince">
+                                <select id="registrationProvince" className='input-style dropdown-arrow' name="registrationProvince" value={formData.registrationProvince} onChange={handleChange}>
                                     <option value="Gauteng" selected>Gauteng</option>
                                     <option value="Western Cape">Western Cape</option>
                                     <option value="Eastern Cape">Eastern Cape</option>
@@ -209,11 +218,11 @@ export default function VehicleHtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vin">VIN (17 characters)</label>
-                                <input type="text" id="vin" className='input-style' name="vin" value="1HGBH41JXMN109186" placeholder="17-character VIN" />
+                                <input type="text" id="vin" className='input-style' name="vin" value={formData.vin} placeholder="17-character VIN" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="engineNumber">Engine Number</label>
-                                <input type="text" id="engineNumber" className='input-style' name="engineNumber" value="ENG-987654321" placeholder="e.g. ENG-987654321" />
+                                <input type="text" id="engineNumber" className='input-style' name="engineNumber" value={formData.engineNumber} placeholder="e.g. ENG-987654321" onChange={handleChange}/>
                             </div>
                         </div>
                     </div>
@@ -223,23 +232,22 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="additionalColors">Additional Colors</label>
-                                <input type="text" id="additionalColors" className='input-style' name="additionalColors" value="Black roof, tinted windows" placeholder="e.g. White roof, red stripe" />
+                                <input type="text" id="additionalColors" className='input-style' name="additionalColors" value={formData.additionalColors} placeholder="e.g. White roof, red stripe" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="condition">Vehicle Condition</label>
-                                <select id="condition" className='input-style dropdown-arrow' name="condition">
+                                <select id="condition" className='input-style dropdown-arrow' name="condition" onChange={handleChange}>
                                     <option value={VehicleCondition.GOOD} selected>Good</option>
                                     <option value={VehicleCondition.OKAY}>Okay</option>
                                     <option value={VehicleCondition.BAD}>Bad</option>
                                     <option value={VehicleCondition.DAMAGED}>Damaged</option>
-                                    <option value="DAMAGED">Damaged</option>
                                 </select>
                             </div>
                             <div className="label_data">
                             </div>
                             <div className="label_data">
                                 <label htmlFor="distinctiveFeatures">Distinctive Features</label>
-                                <textarea id="distinctiveFeatures" className='input-style' name="distinctiveFeatures" rows={3} placeholder="e.g. Roof rack, custom rims">Roof rack, tow bar, aftermarket rims</textarea>
+                                <textarea id="distinctiveFeatures" className='input-style' name="distinctiveFeatures" rows={3} placeholder="e.g. Roof rack, custom rims" value={formData.distinctiveFeatures} onChange={handleChange} />
                             </div>
                         </div>
                     </div>
@@ -249,19 +257,19 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="incidentTimestamp">Incident Date &amp; Time</label>
-                                <input type="datetime-local" id="incidentTimestamp" className='input-style' name="incidentTimestamp" value="2026-03-14T10:30" />
+                                <input type="datetime-local" id="incidentTimestamp" className='input-style' name="incidentTimestamp" value={formData.incidentTimestamp} onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="lastSeenDirection">Last Seen Direction</label>
-                                <input type="text" id="lastSeenDirection" className='input-style' name="lastSeenDirection" value="Northbound on N1 highway" placeholder="e.g. Northbound on N1" />
+                                <input type="text" id="lastSeenDirection" className='input-style' name="lastSeenDirection" value={formData.lastSeenDirection} placeholder="e.g. Northbound on N1" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="numberOfOccupants">Number of Occupants</label>
-                                <input type="number" id="numberOfOccupants" className='input-style' name="numberOfOccupants" value="2" min="0" placeholder="e.g. 2" />
+                                <input type="number" id="numberOfOccupants" className='input-style' name="numberOfOccupants" value={formData.numberOfOccupants} min="0" placeholder="e.g. 2" onChange={handleChange}/>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="suspectDescription">Suspect Description</label>
-                                <textarea id="suspectDescription" className='input-style' name="suspectDescription" rows={3} placeholder="Describe suspect(s)...">Male, approximately 30-40 years old, wearing a red hoodie</textarea>
+                                <textarea id="suspectDescription" className='input-style' name="suspectDescription" rows={3} placeholder="Describe suspect(s)..." value={formData.suspectDescription} onChange={handleChange}/>
                             </div>
                         </div>
                     </div>
@@ -271,14 +279,14 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="trackingDeviceInstalled">Tracking Device Installed</label>
-                                <select id="trackingDeviceInstalled" className='input-style dropdown-arrow' name="trackingDeviceInstalled">
+                                <select id="trackingDeviceInstalled" value={formData.trackingDeviceInstalled} className='input-style dropdown-arrow' name="trackingDeviceInstalled" onChange={handleChange}>
                                     <option value="true" selected>Yes</option>
                                     <option value="false">No</option>
                                 </select>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="trackingProvider">Tracking Provider</label>
-                                <input type="text" id="trackingProvider" className='input-style' name="trackingProvider" value="Tracker SA" placeholder="e.g. Tracker SA, Netstar" />
+                                <input type="text" id="trackingProvider" className='input-style' name="trackingProvider" value={formData.trackingProvider} placeholder="e.g. Tracker SA, Netstar" onChange={handleChange}/>
                             </div>
                         </div>
                     </div>
@@ -288,7 +296,7 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="customDescription">Custom Description</label>
-                                <textarea id="customDescription" className='input-style' name="customDescription" rows={4} placeholder="Any additional inhtmlFormation...">Vehicle was last seen exiting Sandton City parking lot</textarea>
+                                <textarea id="customDescription" className='input-style' name="customDescription" rows={4} placeholder="Any additional inhtmlFormation..." value={formData.customDescription} onChange={handleChange}/>
                             </div>
                         </div>
                     </div>

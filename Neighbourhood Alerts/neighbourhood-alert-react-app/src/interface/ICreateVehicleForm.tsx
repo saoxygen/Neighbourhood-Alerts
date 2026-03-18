@@ -23,7 +23,7 @@ export interface ICreateVehicleForm {
   condition: VehicleCondition;
   distinctiveFeatures: string;
   // Incident
-  incidentTimestamp: Date;
+  incidentTimestamp: string;
   lastSeenDirection: string;
   numberOfOccupants: string;
   suspectDescription: string;
