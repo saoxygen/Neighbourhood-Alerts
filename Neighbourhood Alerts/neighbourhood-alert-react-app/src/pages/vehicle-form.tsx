@@ -49,7 +49,7 @@ export default function VehicleHtmlForm() {
 
     // const [status, setStatus] = useState("idle");
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement >) => {
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
@@ -58,13 +58,14 @@ export default function VehicleHtmlForm() {
         await submitForm(formData); // ← called exactly the same way
     };
 
-    // const [touched, setTouched] = useState({
-    //     crimeDocumentType: false,
-    //     vehicleStatus: false,
-    //     vehicleType: false,
-    //     condition: false,
-    //     // ... any other dropdowns
-    // });
+    const [touched, setTouched] = useState({
+        crimeDocumentType: false,
+        vehicleStatus: false,
+        vehicleType: false,
+        condition: false,
+        registrationProvince: false,
+        // ... any other dropdowns
+    });
 
     return (
         <>
@@ -79,8 +80,16 @@ export default function VehicleHtmlForm() {
 
                             <div className="label_data">
                                 <label htmlFor="crimeDocumentType">Crime Document Type</label>
-                                <select id="crimeDocumentType" value={formData.crimeDocumentType} onChange={handleChange} className='input-style dropdown-arrow' name="crimeDocumentType" defaultValue="">
-                                    <option value="" disabled selected hidden>Select document type</option>
+                                <select
+                                    id="crimeDocumentType"
+                                    value={touched.crimeDocumentType ? formData.crimeDocumentType : ""}
+                                    onChange={(e) => {
+                                        setTouched({ ...touched, crimeDocumentType: true }); handleChange(e);
+                                    }}
+                                    className='input-style dropdown-arrow'
+                                    name="crimeDocumentType"
+                                >
+                                    {!touched.crimeDocumentType && <option value="" disabled hidden>Select a Document type</option>}
                                     <option value={CrimeDocumentType.NO_DOCUMENT}>No Document</option>
                                     <option value={CrimeDocumentType.CASE_NUMBER}>Case Number</option>
                                     <option value={CrimeDocumentType.AFFIDAVIT_SWORN_STATEMENT}>Affidavit</option>
@@ -96,7 +105,17 @@ export default function VehicleHtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleStatus">Vehicle Status</label>
-                                <select id="vehicleStatus" value={formData.vehicleStatus} onChange={handleChange} className='input-style dropdown-arrow' name="vehicleStatus">
+                                <select
+                                    id="vehicleStatus"
+                                    value={touched.vehicleStatus ? formData.vehicleStatus : ""}
+                                    onChange={(e) => {
+                                        setTouched({ ...touched, vehicleStatus: true });
+                                        handleChange(e);
+                                    }}
+                                    className='input-style dropdown-arrow'
+                                    name="vehicleStatus"
+                                >
+                                    {!touched.vehicleStatus && <option value="" disabled selected hidden>Select Vehicle Status</option>}
                                     <option value={VehicleStatus.STOLEN}>Stolen</option>
                                     <option value={VehicleStatus.WANTED}>Wanted</option>
                                     <option value={VehicleStatus.INVOLVED_IN_CRIME}>Involved in Crime</option>
@@ -125,28 +144,38 @@ export default function VehicleHtmlForm() {
                             <div className="label_data">
 
                                 <label htmlFor="numberPlate">Number Plate</label>
-                                <input type="text" id="numberPlate" className='input-style' name="numberPlate" value={formData.numberPlate} placeholder="e.g. GP 12 3456" onChange={handleChange}/>
+                                <input type="text" id="numberPlate" className='input-style' name="numberPlate" value={formData.numberPlate} placeholder="e.g. GP 12 3456" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="color">Color</label>
-                                <input type="text" id="color" className='input-style' name="color" value={formData.color} placeholder="e.g. Black" onChange={handleChange}/>
+                                <input type="text" id="color" className='input-style' name="color" value={formData.color} placeholder="e.g. Black" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="make">Make</label>
-                                <input type="text" id="make" className='input-style' name="make" value={formData.make} placeholder="e.g. Toyota" onChange={handleChange}/>
+                                <input type="text" id="make" className='input-style' name="make" value={formData.make} placeholder="e.g. Toyota" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="model">Model</label>
-                                <input type="text" id="model" className='input-style' name="model" value={formData.model} placeholder="e.g. htmlFortuner" onChange={handleChange}/>
+                                <input type="text" id="model" className='input-style' name="model" value={formData.model} placeholder="e.g. htmlFortuner" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="year">Year</label>
-                                <input type="number" id="year" className='input-style' name="year" value={formData.year} min="1900" max="2100" placeholder="e.g. 2022" onChange={handleChange}/>
+                                <input type="number" id="year" className='input-style' name="year" value={formData.year} min="1900" max="2100" placeholder="e.g. 2022" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vehicleType">Vehicle Type</label>
-                                <select id="vehicleType" value={formData.vehicleType} onChange={handleChange} className='input-style dropdown-arrow' name="vehicleType">
+                                <select
+                                    id="vehicleType"
+                                    value={touched.vehicleType ? formData.vehicleType : ""}
+                                    onChange={(e) => {
+                                        setTouched({ ...touched, vehicleType: true })
+                                        handleChange(e);
+                                    }}
+                                    className='input-style dropdown-arrow'
+                                    name="vehicleType"
+                                >
                                     <optgroup label="Passenger Vehicles">
+                                        {!touched.vehicleType && <option value="" selected hidden disabled>Select Vehicle Type</option>}
                                         <option value={VehicleType.SEDAN}>Sedan</option>
                                         <option value={VehicleType.HATCHBACK}>Hatchback</option>
                                         <option value={VehicleType.COUPE}>Coupe</option>
@@ -194,7 +223,7 @@ export default function VehicleHtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="area">Area</label>
-                                <input type="text" id="area" className='input-style' name="area" value={formData.area} placeholder="e.g. Sandton, Johannesburg" onChange={handleChange}/>
+                                <input type="text" id="area" className='input-style' name="area" value={formData.area} placeholder="e.g. Sandton, Johannesburg" onChange={handleChange} />
                             </div>
                         </div>
                     </div>
@@ -204,7 +233,17 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="registrationProvince">Registration Province</label>
-                                <select id="registrationProvince" className='input-style dropdown-arrow' name="registrationProvince" value={formData.registrationProvince} onChange={handleChange}>
+                                <select
+                                    id="registrationProvince"
+                                    className='input-style dropdown-arrow'
+                                    name="registrationProvince"
+                                    value={touched.registrationProvince ? formData.registrationProvince : ""}
+                                    onChange={(e) => {
+                                        setTouched({ ...touched, registrationProvince: true });
+                                        handleChange(e);
+                                    }}
+                                >
+                                    {!touched.registrationProvince && <option value="" selected>Select Province</option>}
                                     <option value="Gauteng" selected>Gauteng</option>
                                     <option value="Western Cape">Western Cape</option>
                                     <option value="Eastern Cape">Eastern Cape</option>
@@ -218,11 +257,11 @@ export default function VehicleHtmlForm() {
                             </div>
                             <div className="label_data">
                                 <label htmlFor="vin">VIN (17 characters)</label>
-                                <input type="text" id="vin" className='input-style' name="vin" value={formData.vin} placeholder="17-character VIN" onChange={handleChange}/>
+                                <input type="text" id="vin" className='input-style' name="vin" value={formData.vin} placeholder="17-character VIN" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="engineNumber">Engine Number</label>
-                                <input type="text" id="engineNumber" className='input-style' name="engineNumber" value={formData.engineNumber} placeholder="e.g. ENG-987654321" onChange={handleChange}/>
+                                <input type="text" id="engineNumber" className='input-style' name="engineNumber" value={formData.engineNumber} placeholder="e.g. ENG-987654321" onChange={handleChange} />
                             </div>
                         </div>
                     </div>
@@ -232,12 +271,21 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="additionalColors">Additional Colors</label>
-                                <input type="text" id="additionalColors" className='input-style' name="additionalColors" value={formData.additionalColors} placeholder="e.g. White roof, red stripe" onChange={handleChange}/>
+                                <input type="text" id="additionalColors" className='input-style' name="additionalColors" value={formData.additionalColors} placeholder="e.g. White roof, red stripe" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="condition">Vehicle Condition</label>
-                                <select id="condition" className='input-style dropdown-arrow' name="condition" onChange={handleChange}>
-                                    <option value={VehicleCondition.GOOD} selected>Good</option>
+                                <select
+                                    id="condition"
+                                    className='input-style dropdown-arrow'
+                                    name="condition"
+                                    value={touched.condition ? formData.condition : ""}
+                                    onChange={(e) => {
+                                        setTouched({ ...touched, condition: true });
+                                        handleChange(e);
+                                    }}>
+                                    {!touched.condition && <option value="" selected hidden disabled>Select Vehicle Condition</option>}
+                                    <option value={VehicleCondition.GOOD}>Good</option>
                                     <option value={VehicleCondition.OKAY}>Okay</option>
                                     <option value={VehicleCondition.BAD}>Bad</option>
                                     <option value={VehicleCondition.DAMAGED}>Damaged</option>
@@ -257,19 +305,19 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="incidentTimestamp">Incident Date &amp; Time</label>
-                                <input type="datetime-local" id="incidentTimestamp" className='input-style' name="incidentTimestamp" value={formData.incidentTimestamp} onChange={handleChange}/>
+                                <input type="datetime-local" id="incidentTimestamp" className='input-style' name="incidentTimestamp" value={formData.incidentTimestamp} onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="lastSeenDirection">Last Seen Direction</label>
-                                <input type="text" id="lastSeenDirection" className='input-style' name="lastSeenDirection" value={formData.lastSeenDirection} placeholder="e.g. Northbound on N1" onChange={handleChange}/>
+                                <input type="text" id="lastSeenDirection" className='input-style' name="lastSeenDirection" value={formData.lastSeenDirection} placeholder="e.g. Northbound on N1" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="numberOfOccupants">Number of Occupants</label>
-                                <input type="number" id="numberOfOccupants" className='input-style' name="numberOfOccupants" value={formData.numberOfOccupants} min="0" placeholder="e.g. 2" onChange={handleChange}/>
+                                <input type="number" id="numberOfOccupants" className='input-style' name="numberOfOccupants" value={formData.numberOfOccupants} min="0" placeholder="e.g. 2" onChange={handleChange} />
                             </div>
                             <div className="label_data">
                                 <label htmlFor="suspectDescription">Suspect Description</label>
-                                <textarea id="suspectDescription" className='input-style' name="suspectDescription" rows={3} placeholder="Describe suspect(s)..." value={formData.suspectDescription} onChange={handleChange}/>
+                                <textarea id="suspectDescription" className='input-style' name="suspectDescription" rows={3} placeholder="Describe suspect(s)..." value={formData.suspectDescription} onChange={handleChange} />
                             </div>
                         </div>
                     </div>
@@ -279,14 +327,20 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="trackingDeviceInstalled">Tracking Device Installed</label>
-                                <select id="trackingDeviceInstalled" value={formData.trackingDeviceInstalled} className='input-style dropdown-arrow' name="trackingDeviceInstalled" onChange={handleChange}>
-                                    <option value="true" selected>Yes</option>
+                                <select
+                                    id="trackingDeviceInstalled"
+                                    value={formData.trackingDeviceInstalled}
+                                    className='input-style dropdown-arrow'
+                                    name="trackingDeviceInstalled"
+                                    onChange={handleChange}
+                                >
+                                    <option value="true">Yes</option>
                                     <option value="false">No</option>
                                 </select>
                             </div>
                             <div className="label_data">
                                 <label htmlFor="trackingProvider">Tracking Provider</label>
-                                <input type="text" id="trackingProvider" className='input-style' name="trackingProvider" value={formData.trackingProvider} placeholder="e.g. Tracker SA, Netstar" onChange={handleChange}/>
+                                <input type="text" id="trackingProvider" className='input-style' name="trackingProvider" value={formData.trackingProvider} placeholder="e.g. Tracker SA, Netstar" onChange={handleChange} />
                             </div>
                         </div>
                     </div>
@@ -296,7 +350,7 @@ export default function VehicleHtmlForm() {
                         <div className="fieldset">
                             <div className="label_data">
                                 <label htmlFor="customDescription">Custom Description</label>
-                                <textarea id="customDescription" className='input-style' name="customDescription" rows={4} placeholder="Any additional inhtmlFormation..." value={formData.customDescription} onChange={handleChange}/>
+                                <textarea id="customDescription" className='input-style' name="customDescription" rows={4} placeholder="Any additional inhtmlFormation..." value={formData.customDescription} onChange={handleChange} />
                             </div>
                         </div>
                     </div>
