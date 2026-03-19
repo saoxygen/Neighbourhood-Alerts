@@ -89,7 +89,7 @@ export default function VehicleHtmlForm() {
                                     className='input-style dropdown-arrow'
                                     name="crimeDocumentType"
                                 >
-                                    {!touched.crimeDocumentType && <option value="" disabled hidden>Select a Document type</option>}
+                                    {!touched.crimeDocumentType && <option value="" disabled selected hidden>Select a Document type</option>}
                                     <option value={CrimeDocumentType.NO_DOCUMENT}>No Document</option>
                                     <option value={CrimeDocumentType.CASE_NUMBER}>Case Number</option>
                                     <option value={CrimeDocumentType.AFFIDAVIT_SWORN_STATEMENT}>Affidavit</option>
@@ -243,8 +243,8 @@ export default function VehicleHtmlForm() {
                                         handleChange(e);
                                     }}
                                 >
-                                    {!touched.registrationProvince && <option value="" selected>Select Province</option>}
-                                    <option value="Gauteng" selected>Gauteng</option>
+                                    {!touched.registrationProvince && <option value="" disabled selected hidden>Select Province</option>}
+                                    <option value="Gauteng">Gauteng</option>
                                     <option value="Western Cape">Western Cape</option>
                                     <option value="Eastern Cape">Eastern Cape</option>
                                     <option value="KwaZulu-Natal">KwaZulu-Natal</option>
