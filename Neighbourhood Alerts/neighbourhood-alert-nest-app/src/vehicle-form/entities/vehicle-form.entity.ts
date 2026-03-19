@@ -49,8 +49,6 @@ export class VehicleForm {
     engineNumber: string;
 
     // Visual
-    @Column({ type: 'varchar', length: 50, nullable: true })
-    bodyStyle: string;
 
     @Column({ type: 'varchar', length: 100, nullable: true })
     additionalColors: string;

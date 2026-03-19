@@ -28,7 +28,6 @@ export default function VehicleHtmlForm() {
         engineNumber: '',
 
         // Visual Description
-        bodyStyle: '',
         additionalColors: '',
         condition: VehicleCondition.GOOD,
         distinctiveFeatures: '',
@@ -64,6 +63,7 @@ export default function VehicleHtmlForm() {
         vehicleType: false,
         condition: false,
         registrationProvince: false,
+        trackingDeviceInstalled: false,
         // ... any other dropdowns
     });
 
@@ -329,11 +329,15 @@ export default function VehicleHtmlForm() {
                                 <label htmlFor="trackingDeviceInstalled">Tracking Device Installed</label>
                                 <select
                                     id="trackingDeviceInstalled"
-                                    value={formData.trackingDeviceInstalled}
+                                    value={touched.trackingDeviceInstalled ? formData.trackingDeviceInstalled : ""}
                                     className='input-style dropdown-arrow'
                                     name="trackingDeviceInstalled"
-                                    onChange={handleChange}
+                                    onChange={(e) => {
+                                        setTouched({...touched, trackingDeviceInstalled: true});
+                                        handleChange(e);
+                                    }}
                                 >
+                                    {!touched.trackingDeviceInstalled && <option value="">Select relevant option</option>}
                                     <option value="true">Yes</option>
                                     <option value="false">No</option>
                                 </select>

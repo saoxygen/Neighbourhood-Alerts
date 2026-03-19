@@ -32,7 +32,6 @@ export class CreateVehicleFormDto {
     @RemoveSpaces() @IsString() engineNumber: string;
 
     // Visual
-    @IsString() bodyStyle: string;
 
     @IsString() additionalColors: string;
 

@@ -18,7 +18,6 @@ export interface ICreateVehicleForm {
   vin: string;
   engineNumber: string;
   // Visual
-  bodyStyle: string;
   additionalColors: string;
   condition: VehicleCondition;
   distinctiveFeatures: string;
